@@ -1,11 +1,14 @@
 import './App.css';
 import React from 'react';
-import Main from "./views/ProjectMain"
+import Main from "./views/MainLayout"
+import {CookiesProvider} from "react-cookie";
 
 const App = () => {
 
   return (
-      <Main/>
+      <CookiesProvider>
+        <Main/>
+      </CookiesProvider>
   )
 }
 

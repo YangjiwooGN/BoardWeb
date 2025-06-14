@@ -1,4 +1,11 @@
-import React, {useEffect, useState} from "react";
-import axios from "axios";
-import Routing from "../../Routing";
+import React from "react";
 
+export default function ProjectMain(){
+    return (
+        <>
+            <div>
+                메인화면
+            </div>
+        </>
+    )
+}
