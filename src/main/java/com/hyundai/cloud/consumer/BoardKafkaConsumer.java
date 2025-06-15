@@ -20,4 +20,9 @@ public class BoardKafkaConsumer {
         doc.setBoardNumber(String.valueOf(entity.getBoardNumber()));
         boardMongoRepository.save(doc);
     }
+
+    @KafkaListener(topics = "board-delete-topic", groupId = "cloud-group")
+    public void consumeDeleteBoard(String boardId) {
+        boardMongoRepository.deleteById(boardId);
+    }
 }

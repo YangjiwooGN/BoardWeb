@@ -96,13 +96,6 @@ export default function Navigation() {
                                 onClose={handleMenuClose}
                             >
                                 <MenuItem onClick={() => {
-                                    handleMenuClose();
-                                }}>
-                                    <Link to="/memberInfo" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                        정보 수정
-                                    </Link>
-                                </MenuItem>
-                                <MenuItem onClick={() => {
                                     logOutHandler();
                                     handleMenuClose();
                                 }}>

@@ -1,7 +1,6 @@
 import axios from "axios";
 
-export const signInApi = async (data) => {
-
+export const signInApi = async (data, token) => {
     const response = await axios.post("http://localhost:8080/api/auth/signIn", data).catch((error) => null);
     if(!response){
         return null;
@@ -11,7 +10,7 @@ export const signInApi = async (data) => {
     return result;
 }
 
-export const signUpApi = async (data) => {
+export const signUpApi = async (data, token) => {
     const response = await axios.post('http://localhost:8080/api/auth/signUp', data).catch((error) => null);
     if(!response){
         return null;

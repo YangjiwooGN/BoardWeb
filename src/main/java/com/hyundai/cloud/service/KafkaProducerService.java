@@ -16,6 +16,10 @@ public class KafkaProducerService {
         kafkaTemplate.send("board-topic", board);
     }
 
+    public void deleteBoard(int boardId) {
+        kafkaTemplate.send("board-delete-topic", String.valueOf(boardId));
+    }
+
     public void sendComment(CommentEntity comment) {
         kafkaTemplate.send("comment-topic", comment);
     }
