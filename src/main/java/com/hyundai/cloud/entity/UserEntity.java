@@ -9,13 +9,18 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serial;
+import java.io.Serializable;
+
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "User")
 @Table(name = "User")
-public class UserEntity {
+public class UserEntity implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     @Id
     private String userEmail;
     private String userPassword;
@@ -24,7 +29,7 @@ public class UserEntity {
     private String userPhoneNumber;
     private String userAddress;
 
-    public UserEntity(SignUpDto dto){
+    public UserEntity(SignUpDto dto) {
         this.userEmail = dto.getUserEmail();
         this.userPassword = dto.getUserPassword();
         this.userNickname = dto.getUserNickname();
