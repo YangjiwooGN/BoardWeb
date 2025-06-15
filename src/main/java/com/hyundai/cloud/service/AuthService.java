@@ -10,6 +10,7 @@ import com.hyundai.cloud.repository.UserRepository;
 import com.hyundai.cloud.repository.UserMongoRepository;
 import com.hyundai.cloud.security.TokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,8 @@ public class AuthService {
 
     @Autowired
     UserMongoRepository userMongoRepository;
+    @Autowired
+    private UserKafkaProducerService userKafkaProducer;
     @Autowired
     UserRepository userRepository;
     @Autowired
@@ -52,6 +55,8 @@ public class AuthService {
         try{
             // UserRepository를 이용해서 데이터베이스에 Entity 저장
             userRepository.save(userEntity);
+            // Kafka에 발행
+            userKafkaProducer.sendUser(userEntity);
         }catch (Exception e){
             return ResponseDto.setFailed("Database Error");
         }
