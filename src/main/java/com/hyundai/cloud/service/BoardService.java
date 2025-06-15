@@ -42,6 +42,7 @@ public class BoardService {
 
     public void deleteBoard(int id) {
         boardRepository.deleteById(id);
+        kafkaProducerService.deleteBoard(id);
     }
 
     public void createPost(BoardDto boardDto) {
